@@ -2,21 +2,15 @@ import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 
-const Cell = ({type, children, setOrder}) => {
-
-  const [ sort, setSort ] = useState();
+const Cell = ({type, children, setOrder, data, order}) => {
 
   const handleCell = () => {
-    console.log(sort, children);
-    if (sort === undefined){
-      setSort('asc');
-      setOrder('asc');
-    } else if (sort === 'asc'){
-      setOrder('desc');
-      setSort('desc');
+    if (order.sort === undefined){
+      setOrder({sort: 'asc', col: data});
+    } else if (order.sort === 'asc'){
+      setOrder({sort: 'desc', col: data});
     } else{
-      setOrder('asc');
-      setSort('asc');
+      setOrder({sort:'asc', col: data});
     }
   }
   
@@ -25,7 +19,12 @@ const Cell = ({type, children, setOrder}) => {
       {type === 'th' 
         ? <th onClick={() => handleCell()} >
             {children} 
-            <FontAwesomeIcon icon={sort === undefined ? faSort : sort === 'asc' ? faSortUp : faSortDown} />
+            <FontAwesomeIcon icon={order.sort === undefined 
+              ? faSort 
+              : data === order.col && order.sort === 'asc' 
+              ? faSortUp : data === order.col && order.sort === 'desc' 
+              ? faSortDown 
+              : faSort} />
           </th> 
         : <td>{children}</td>}
     </>

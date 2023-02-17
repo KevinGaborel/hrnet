@@ -1,7 +1,16 @@
-const Row = ({children, styleName}) => {
-  
+import Cell from './cell';
+
+const Row = ({columns, styleName, setOrder, type, cell, order}) => {
+
   return (
-    <tr className={styleName} >{children}</tr>
+    <tr className={styleName}>
+      {columns.map((col) => 
+        <Cell key={col.title} type={type} setOrder={setOrder} order={order} data={col.data} >
+          {cell ? cell[col.data] : col.title}
+        </Cell>)}
+    </tr>
+
+
   );
 };
 
