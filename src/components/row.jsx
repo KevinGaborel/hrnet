@@ -1,4 +1,4 @@
-import Cell from './cell';
+import Cell from './Cell';
 
 const Row = ({columns, styleName, setOrder, type, cell, order}) => {
 
