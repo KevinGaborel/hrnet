@@ -1,5 +1,5 @@
 import Headers from './components/Headers';
-import './templates/blueTemp.css';
+import './templates/purpleTemp.css';
 import useRowData from './hooks/useRowData';
 
 
@@ -9,8 +9,10 @@ const DataTable = ({data, columns}) => {
 
   return (
     <>
-    <Headers type={'thead'} columns={columns} setOrder={setOrder} order={order} />
-    <Headers type={'tbody'} rowData={rowData} columns={columns} />
+    <table>
+      <Headers type={'thead'} columns={columns} setOrder={setOrder} order={order} />
+      <Headers type={'tbody'} rowData={rowData} columns={columns} />
+    </table>
     </>
   )
 }

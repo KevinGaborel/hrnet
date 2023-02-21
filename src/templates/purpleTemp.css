@@ -1,0 +1,39 @@
+*{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+table{
+  border-collapse: collapse;
+  border-radius: 10px;
+  background-color: #6c7ae0;
+}
+.title-row{
+  color: white;
+}
+tr{
+  color: black;
+}
+tbody > tr:nth-child(odd){
+  background-color: #FFFFFF;
+}
+tbody > tr:nth-child(even){
+  background-color: #F8F6FF;
+}
+tbody > tr:hover{
+  background-color: #7d87d4;
+  color: white;
+}
+
+td, th{
+  padding: 0 10px;
+}
+td{
+  font-size: 16px;
+}
+th{
+  font-size: 18px;
+  height: 30px;
+}
+
+svg{
+  margin: 0 5px;
+}
