@@ -8,44 +8,38 @@ const useRowData = (data) => {
 
   const rowData = useMemo(() => {
     const regexDate = /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/;
-
-    data.sort((a, b) => {
+    const firstValue = data[0][order.col];
+    
     if (order.sort === "asc"){
-      if (typeof a[order.col] === "number" && typeof b[order.col] === "number"){
-        return a[order.col] - b[order.col];
-      } else if (regexDate.test(a[order.col])){
-        if (Date.parse(a[order.col]) < Date.parse(b[order.col])){
-          return -1;
-        }else if (Date.parse(a[order.col]) > Date.parse(b[order.col]) ){
-          return 1;
-        }
-      } else{
-        if (a[order.col] < b[order.col]){
-          return -1;
-        }else if (a[order.col] > b[order.col] ){
-          return 1;
-        }
+      if (typeof firstValue === "number" || (parseInt(firstValue) === "number" && !regexDate.test(firstValue))){
+        return data.sort((a,b) => a[order.col] - b[order.col]);
+      } 
+      else if (regexDate.test(firstValue)){
+        return data.sort((a,b) => {
+          if (Date.parse(a[order.col]) < Date.parse(b[order.col])){
+            return -1;
+          }else if (Date.parse(a[order.col]) > Date.parse(b[order.col]) ){
+            return 1;
+          }
+        })
+      } 
+      else{
+        return data.sort((a,b) => {
+          if (a[order.col] < b[order.col]){
+            return -1;
+          }else{
+            return 1;
+          }
+        })
       }
-    }else{
-      if (typeof a[order.col] === "number" && typeof b[order.col] === "number"){
-        return b[order.col] - a[order.col];
-      } else if (regexDate.test(a[order.col])){
-        if (Date.parse(a[order.col]) < Date.parse(b[order.col])){
-          return 1;
-        }else if (Date.parse(a[order.col]) > Date.parse(b[order.col]) ){
-          return -1;
-        }
-      } else{
-        if (a[order.col] < b[order.col]){
-          return 1;
-        }else if (a[order.col] > b[order.col] ){
-          return -1;
-        }
-      }
+    }else if (order.sort === "desc"){
+      return [...data].reverse();
     }
-    });
+    else{
+      return data;
+    }
+    
 
-    return data;
   }, [order, data]);
 
   return { rowData, order, setOrder };

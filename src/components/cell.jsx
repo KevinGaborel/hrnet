@@ -5,9 +5,8 @@ import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
 const Cell = ({type, children, setOrder, data, order}) => {
 
   const handleCell = () => {
-    if (!order.sort){
-      setOrder({sort: 'asc', col: data});
-    } else if (order.sort === 'asc'){
+    console.log(data, order);
+    if (order.sort === 'asc' && order.col === data){
       setOrder({sort: 'desc', col: data});
     } else{
       setOrder({sort:'asc', col: data});
