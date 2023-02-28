@@ -10,6 +10,9 @@ const PageSelector = ({counter, setCounter}) => {
           : 'btn-page-alpha btn-page-disabled'
         }  
         isDisabled={counter.actualPage === 1 && true} 
+        setCounter={setCounter}
+        counter={counter}
+        increment={-1}
       />
 
       {counter.nbPage.map((value, index) => 
@@ -30,6 +33,9 @@ const PageSelector = ({counter, setCounter}) => {
           : 'btn-page-alpha btn-page-disabled'
         } 
         isDisabled={counter.actualPage === counter.nbPage.length && true} 
+        setCounter={setCounter}
+        counter={counter}
+        increment={1}
       />
     </div>
   );
