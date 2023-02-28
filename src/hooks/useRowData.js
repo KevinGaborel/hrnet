@@ -8,10 +8,17 @@ const useRowData = (data) => {
 
   const rowData = useMemo(() => {
     const regexDate = /[0-9]{2}\/[0-9]{2}\/[0-9]{4}/;
+
+    if (data.length < 1){
+      return data;
+    };
+
+
+
     const firstValue = data[0][order.col];
     
     if (order.sort === "asc"){
-      if (typeof firstValue === "number" || (parseInt(firstValue) === "number" && !regexDate.test(firstValue))){
+      if (typeof firstValue === "number" || (typeof parseInt(firstValue) === "number" && !regexDate.test(firstValue))){
         return data.sort((a,b) => a[order.col] - b[order.col]);
       } 
       else if (regexDate.test(firstValue)){
