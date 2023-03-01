@@ -14,11 +14,10 @@ const useRowData = (data) => {
     };
 
 
-
     const firstValue = data[0][order.col];
     
     if (order.sort === "asc"){
-      if (typeof firstValue === "number" || (typeof parseInt(firstValue) === "number" && !regexDate.test(firstValue))){
+      if (typeof firstValue === "number" || (parseInt(firstValue) && !regexDate.test(firstValue))){
         return data.sort((a,b) => a[order.col] - b[order.col]);
       } 
       else if (regexDate.test(firstValue)){

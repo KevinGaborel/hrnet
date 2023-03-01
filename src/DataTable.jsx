@@ -4,7 +4,7 @@ import useRowData from './hooks/useRowData';
 import SearchBar from './components/SearchBar';
 import SelectNbEntries from './components/SelectNbEntries';
 import PageSelector from './components/PageSelector';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 
 const DataTable = ({data, columns}) => {
@@ -29,7 +29,7 @@ const DataTable = ({data, columns}) => {
       setDataView(rowData);
     }
 
-  }, [tableLength, rowData, counter.actualPage]);
+  }, [tableLength, rowData, counter.actualPage, order]);
 
 
   return (
