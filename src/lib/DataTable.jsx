@@ -4,7 +4,7 @@ import useRowData from './hooks/useRowData';
 import SearchBar from './components/SearchBar';
 import SelectNbEntries from './components/SelectNbEntries';
 import PageSelector from './components/PageSelector';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const DataTable = ({data, columns}) => {
