@@ -1,0 +1,105 @@
+*{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.datable{
+  display: flex;
+  flex-direction: column;
+}
+table{
+  border-collapse: collapse;
+  border-radius: 10px;
+  background-color: #6c7ae0;
+}
+tbody{
+  border: #7d87d4 solid 2px;
+}
+.title-row{
+  color: white;
+}
+tr{
+  color: black;
+}
+tbody > tr:nth-child(odd){
+  background-color: #FFFFFF;
+}
+tbody > tr:nth-child(even){
+  background-color: #F8F6FF;
+}
+tbody > tr:hover{
+  background-color: #7d87d4;
+  color: white;
+}
+
+td, th{
+  padding: 0 10px;
+}
+td{
+  font-size: 16px;
+}
+th{
+  font-size: 18px;
+  height: 30px;
+}
+
+svg{
+  margin: 0 5px;
+}
+
+.table-empty{
+  text-align: center;
+}
+
+/*search*/
+#searchBar{
+  border: #6c7ae0 solid 2px;
+  padding-left: 5px;
+}
+#searchBar:focus{
+  outline: #7d87d4 solid 1px;
+}
+
+/* pagination */
+.head-tab, .foot-tab{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+.btn-page-alpha, .btn-page-num{
+  border: solid 1px #F8F6FF;
+  background-color: #6c7ae0;
+  color: white;
+  font-size: 16px;
+}
+.btn-page-alpha:hover, .btn-page-num:hover, .btn-page-active{
+  background-color: #F8F6FF;
+  color: #6c7ae0;
+}
+.btn-page-alpha{
+  width: 50px;
+}
+.btn-page-num{
+  width: 25px;
+}
+.btn-page-disabled{
+  color: black;
+  background-color: rgba(1, 1, 1, 0);
+  border: none;
+}
+.btn-page-disabled:hover{
+  color: black;
+  background-color: rgba(1, 1, 1, 0);
+}
+
+@media only screen and (max-width: 1100px) {
+  .datable{
+    overflow-x: scroll;
+  }
+  td, th{
+    white-space: nowrap;
+  }
+  .head-tab, .foot-tab{
+    flex-direction: column;
+    align-items: center;
+    min-height: 60px;
+  }
+}
