@@ -1,12 +1,12 @@
-import DataTable from './DataTable';
-import mock from './data/dataMock';
+import DataTable from "./lib/DataTable";
+import data from './data.json';
 
-const Home = ()=> {
+const Home = ()  => {
 
   return(
-    <DataTable 
-      data={mock}
-      columns = {[
+    <DataTable data={data} 
+
+    columns = {[
       { title: 'First Name', data: 'firstName' },
       { title: 'Last Name', data: 'lastName' },
       { title: 'Start Date', data: 'startDate' },
@@ -17,8 +17,9 @@ const Home = ()=> {
       { title: 'State', data: 'state' },
       { title: 'Zip Code', data: 'zipCode' }
       ]}
+    
     />
-  )
-}
+  );
+};
 
 export default Home;

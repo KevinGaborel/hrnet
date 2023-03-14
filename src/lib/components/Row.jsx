@@ -1,4 +1,5 @@
 import Cell from './Cell';
+import React from "react";
 
 const Row = ({columns, styleName, setOrder, type, cell, order}) => {
 

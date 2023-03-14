@@ -1,4 +1,6 @@
 import BtnPage from "./BtnPage";
+import React from "react";
+
 
 const PageSelector = ({counter, setCounter}) => {
   

@@ -1,4 +1,5 @@
 import Row from './Row';
+import React from "react";
 
 const Headers = ({type, columns, setOrder, order, rowData}) => {
 

@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons'
+import React from "react";
 
 const Cell = ({type, children, setOrder, data, order}) => {
 

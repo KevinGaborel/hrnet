@@ -1,3 +1,5 @@
+import React from "react";
+
 const BtnPage = ({value, setCounter, counter, styleName, isDisabled, increment}) => {
   
   return(

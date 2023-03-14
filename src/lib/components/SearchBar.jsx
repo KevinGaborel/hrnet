@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React from "react";
 
 const SearchBar = ({data, setNewData}) => {
 
@@ -26,7 +26,6 @@ const SearchBar = ({data, setNewData}) => {
       }
       setNewData(newData);
     } else{
-      console.log(data);
       setNewData(data);
     }
 
