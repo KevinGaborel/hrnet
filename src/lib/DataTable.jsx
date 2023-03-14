@@ -6,6 +6,17 @@ import SelectNbEntries from './components/SelectNbEntries';
 import PageSelector from './components/PageSelector';
 import React, { useState, useEffect } from 'react';
 
+/**
+ * It is a function that takes an object as a prop and returns a DataTable
+ * @param {object} props  object to DataTable
+ * @param {array} props.data table of object, table data
+ * @param {object} props.data[0] object representing a user
+ * @param {array} props.columns table of object, representing column heading titles and column-bound data
+ * @param {object} props.columns[0] object that represents a column with its title and its data
+ * @param {string} props.columns[0].title string, representing the title in the column heading
+ * @param {string} props.columns[0].data string, represents the name of the key of the corresponding props.data object in order to fill the column there
+ * @return {JSX.Element} DataTable
+ */
 
 const DataTable = ({data, columns}) => {
 

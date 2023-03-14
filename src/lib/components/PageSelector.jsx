@@ -1,6 +1,15 @@
 import BtnPage from "./BtnPage";
 import React from "react";
 
+/**
+ * It is a function that takes an object as a prop and returns a PageSelector
+ * @param {object} props  object to PageSelector
+ * @param {function} props.setCounter function that allows you to modify the value of the state counter
+ * @param {object} props.counter object represents the number of pages, and the page currently viewed by the user
+ * @param {array} props.counter.nbPage array that represents the number of pages available
+ * @param {number} props.counter.actualPage number that represents which page the user is currently viewing
+ * @return {JSX.Element} PageSelector
+ */
 
 const PageSelector = ({counter, setCounter}) => {
   
