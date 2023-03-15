@@ -1,4 +1,16 @@
-import { useState, useMemo } from "react";
+import React, { useState, useMemo } from "react";
+
+/**
+ * It is a function that takes an object as a prop and returns useRowData
+ * @param {object} props  object to useRowData
+ * @param {array} props.data table of object, table data
+ * @param {object} props.data[0] object representing a user
+ * 
+ * @return {object} useRowData
+ * @return {object.rowData} table of object representing users sorted
+ * @return {object.order} object representing the sort type (ascending or descending) and the sorted column
+ * @return {object.setOrder} function that allows you to modify the value of the state order
+ */
 
 const useRowData = (data) => {
   const [order, setOrder] = useState({

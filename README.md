@@ -1,11 +1,17 @@
-# import the array this way:
+# This tool allows you to create simple tables with some features like sorting.
 
-### `import DataTable from 'DataTable';`
+To install it on your project, copy paste the following line in your terminal:
+
+`npm i @kevin-gaborel/hrnet`
+
+## import the array this way:
+
+`import DataTable from '@kevin-gaborel/hrnet';`
 
 ## Then create the component by giving it the data, the title of the columns, and the data corresponding to each column.
 
     <DataTable
-      data={mock}
+      data={yourData}
       columns = {[
       { title: 'First Name', data: 'firstName' },
       { title: 'Last Name', data: 'lastName' },
@@ -17,4 +23,4 @@
       { title: 'State', data: 'state' },
       { title: 'Zip Code', data: 'zipCode' }
       ]}
-    />`
+    />

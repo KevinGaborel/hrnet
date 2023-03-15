@@ -1,4 +1,15 @@
 import BtnPage from "./BtnPage";
+import React from "react";
+
+/**
+ * It is a function that takes an object as a prop and returns a PageSelector
+ * @param {object} props  object to PageSelector
+ * @param {function} props.setCounter function that allows you to modify the value of the state counter
+ * @param {object} props.counter object represents the number of pages, and the page currently viewed by the user
+ * @param {array} props.counter.nbPage array that represents the number of pages available
+ * @param {number} props.counter.actualPage number that represents which page the user is currently viewing
+ * @return {JSX.Element} PageSelector
+ */
 
 const PageSelector = ({counter, setCounter}) => {
   
@@ -15,17 +26,48 @@ const PageSelector = ({counter, setCounter}) => {
         increment={-1}
       />
 
-      {counter.nbPage.map((value, index) => 
-        <BtnPage key={`btn ${index}`} 
-          value={index + 1} 
-          setCounter={setCounter} 
-          counter={counter} 
-          styleName={index + 1 !== counter.actualPage 
-            ? 'btn-page-num'
-            : 'btn-page-num btn-page-active'
-          } 
-        />
-      )}
+
+      {counter.nbPage.length >= 6 
+      ? 
+        counter.nbPage.map((value, index) => 
+          (index < counter.actualPage + 2 && index > counter.actualPage - 4) || (index > counter.nbPage.length - 2)
+          ?
+            <BtnPage key={`btn ${index}`} 
+              value={index + 1} 
+              setCounter={setCounter} 
+              counter={counter} 
+              styleName={index + 1 !== counter.actualPage 
+                ? 'btn-page-num'
+                : 'btn-page-num btn-page-active'
+              } 
+            />
+          :
+          index === counter.actualPage + 3 && counter.nbPage.length - 1 !== index
+          &&
+            <BtnPage 
+              key={`btn ...`}
+              value={'...'} 
+              styleName='btn-page-alpha'
+              isDisabled={true} 
+              setCounter={setCounter}
+              counter={counter}
+              increment={-1}
+            />
+        )
+      :
+        counter.nbPage.map((value, index) => 
+          <BtnPage key={`btn ${index}`} 
+            value={index + 1} 
+            setCounter={setCounter} 
+            counter={counter} 
+            styleName={index + 1 !== counter.actualPage 
+              ? 'btn-page-num'
+              : 'btn-page-num btn-page-active'
+            } 
+          />
+        )
+      }
+
 
       <BtnPage value={'Next'} 
         styleName={counter.actualPage !== counter.nbPage.length 

@@ -1,4 +1,13 @@
-import { useEffect, useState } from "react";
+import React from "react";
+
+/**
+ * It is a function that takes an object as a prop and returns a SearchBar
+ * @param {object} props  object to SearchBar
+ * @param {array} props.data table of object, table data
+ * @param {object} props.data[0] object representing a user
+ * @param {function} props.setNewData function that allows you to modify the state, which will keep the data corresponding to the search
+ * @return {JSX.Element} SearchBar
+ */
 
 const SearchBar = ({data, setNewData}) => {
 
@@ -26,7 +35,6 @@ const SearchBar = ({data, setNewData}) => {
       }
       setNewData(newData);
     } else{
-      console.log(data);
       setNewData(data);
     }
 

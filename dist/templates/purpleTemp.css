@@ -78,7 +78,8 @@ svg{
   width: 50px;
 }
 .btn-page-num{
-  width: 25px;
+  width: 30px;
+  padding: 1px 0;
 }
 .btn-page-disabled{
   color: black;

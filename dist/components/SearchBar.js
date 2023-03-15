@@ -6,7 +6,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _createForOfIteratorHelper2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createForOfIteratorHelper"));
-var _react = require("react");
+var _react = _interopRequireDefault(require("react"));
+/**
+ * It is a function that takes an object as a prop and returns a SearchBar
+ * @param {object} props  object to SearchBar
+ * @param {array} props.data table of object, table data
+ * @param {object} props.data[0] object representing a user
+ * @param {function} props.setNewData function that allows you to modify the state, which will keep the data corresponding to the search
+ * @return {JSX.Element} SearchBar
+ */
+
 var SearchBar = function SearchBar(_ref) {
   var data = _ref.data,
     setNewData = _ref.setNewData;
@@ -41,13 +50,12 @@ var SearchBar = function SearchBar(_ref) {
       }
       setNewData(newData);
     } else {
-      console.log(data);
       setNewData(data);
     }
   };
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("label", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "searchBar"
-  }, "Search: "), /*#__PURE__*/React.createElement("input", {
+  }, "Search: "), /*#__PURE__*/_react.default.createElement("input", {
     type: "search",
     name: "searchBar",
     id: "searchBar",

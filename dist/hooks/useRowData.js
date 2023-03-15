@@ -1,5 +1,6 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard").default;
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -7,7 +8,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/toConsumableArray"));
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
+/**
+ * It is a function that takes an object as a prop and returns useRowData
+ * @param {object} props  object to useRowData
+ * @param {array} props.data table of object, table data
+ * @param {object} props.data[0] object representing a user
+ * 
+ * @return {object} useRowData
+ * @return {object.rowData} table of object representing users sorted
+ * @return {object.order} object representing the sort type (ascending or descending) and the sorted column
+ * @return {object.setOrder} function that allows you to modify the value of the state order
+ */
+
 var useRowData = function useRowData(data) {
   var _useState = (0, _react.useState)({
       sort: undefined,

@@ -1,11 +1,11 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard").default;
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/toConsumableArray"));
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread2"));
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 var _Headers = _interopRequireDefault(require("./components/Headers"));
@@ -14,7 +14,19 @@ var _useRowData2 = _interopRequireDefault(require("./hooks/useRowData"));
 var _SearchBar = _interopRequireDefault(require("./components/SearchBar"));
 var _SelectNbEntries = _interopRequireDefault(require("./components/SelectNbEntries"));
 var _PageSelector = _interopRequireDefault(require("./components/PageSelector"));
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
+/**
+ * It is a function that takes an object as a prop and returns a DataTable
+ * @param {object} props  object to DataTable
+ * @param {array} props.data table of object, table data
+ * @param {object} props.data[0] object representing a user
+ * @param {array} props.columns table of object, representing column heading titles and column-bound data
+ * @param {object} props.columns[0] object that represents a column with its title and its data
+ * @param {string} props.columns[0].title string, representing the title in the column heading
+ * @param {string} props.columns[0].data string, represents the name of the key of the corresponding props.data object in order to fill the column there
+ * @return {JSX.Element} DataTable
+ */
+
 var DataTable = function DataTable(_ref) {
   var data = _ref.data,
     columns = _ref.columns;
@@ -43,9 +55,14 @@ var DataTable = function DataTable(_ref) {
     setCounter = _useState8[1];
   (0, _react.useEffect)(function () {
     if (rowData.length > tableLength) {
+      var nbPage = Math.ceil(rowData.length / tableLength);
+      var result = [];
+      for (var i = 1; i <= nbPage; i++) {
+        result.push(i);
+      }
       setDataView(rowData.slice(tableLength * counter.actualPage - tableLength, tableLength * counter.actualPage));
       setCounter((0, _objectSpread2.default)((0, _objectSpread2.default)({}, counter), {}, {
-        nbPage: [parseInt.apply(void 0, (0, _toConsumableArray2.default)(counter.nbPage)), 1]
+        nbPage: result
       }));
     } else {
       setCounter((0, _objectSpread2.default)((0, _objectSpread2.default)({}, counter), {}, {
@@ -54,37 +71,37 @@ var DataTable = function DataTable(_ref) {
       setDataView(rowData);
     }
   }, [tableLength, rowData, counter.actualPage, order]);
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", {
     className: "datable"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "head-tab"
-  }, /*#__PURE__*/React.createElement(_SelectNbEntries.default, {
+  }, /*#__PURE__*/_react.default.createElement(_SelectNbEntries.default, {
     setTableLength: setTableLength,
     setCounter: setCounter,
     counter: counter
-  }), /*#__PURE__*/React.createElement(_SearchBar.default, {
+  }), /*#__PURE__*/_react.default.createElement(_SearchBar.default, {
     data: data,
     setNewData: setNewData
-  })), /*#__PURE__*/React.createElement("table", null, rowData.length > 0 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Headers.default, {
+  })), /*#__PURE__*/_react.default.createElement("table", null, rowData.length > 0 ? /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Headers.default, {
     type: 'thead',
     columns: columns,
     setOrder: setOrder,
     order: order
-  }), /*#__PURE__*/React.createElement(_Headers.default, {
+  }), /*#__PURE__*/_react.default.createElement(_Headers.default, {
     type: 'tbody',
     rowData: dataView,
     columns: columns
-  })) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Headers.default, {
+  })) : /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement(_Headers.default, {
     type: 'thead',
     columns: columns,
     setOrder: setOrder,
     order: order
-  }), /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("td", {
+  }), /*#__PURE__*/_react.default.createElement("tbody", null, /*#__PURE__*/_react.default.createElement("tr", null, /*#__PURE__*/_react.default.createElement("td", {
     colSpan: columns.length,
     className: "table-empty"
-  }, "No matching records found"))))), /*#__PURE__*/React.createElement("div", {
+  }, "No matching records found"))))), /*#__PURE__*/_react.default.createElement("div", {
     className: "foot-tab"
-  }, /*#__PURE__*/React.createElement("span", null, "Showing ".concat(tableLength * counter.actualPage - tableLength + 1, " \n          to ").concat(rowData.length < tableLength * counter.actualPage ? rowData.length : tableLength * counter.actualPage, " \n          of ").concat(rowData.length, " entries")), /*#__PURE__*/React.createElement(_PageSelector.default, {
+  }, /*#__PURE__*/_react.default.createElement("span", null, "Showing ".concat(tableLength * counter.actualPage - tableLength + 1, " \n          to ").concat(rowData.length < tableLength * counter.actualPage ? rowData.length : tableLength * counter.actualPage, " \n          of ").concat(rowData.length, " entries")), /*#__PURE__*/_react.default.createElement(_PageSelector.default, {
     setCounter: setCounter,
     counter: counter
   })));
