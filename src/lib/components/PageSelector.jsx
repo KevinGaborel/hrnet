@@ -26,17 +26,48 @@ const PageSelector = ({counter, setCounter}) => {
         increment={-1}
       />
 
-      {counter.nbPage.map((value, index) => 
-        <BtnPage key={`btn ${index}`} 
-          value={index + 1} 
-          setCounter={setCounter} 
-          counter={counter} 
-          styleName={index + 1 !== counter.actualPage 
-            ? 'btn-page-num'
-            : 'btn-page-num btn-page-active'
-          } 
-        />
-      )}
+
+      {counter.nbPage.length >= 6 
+      ? 
+        counter.nbPage.map((value, index) => 
+          index < counter.actualPage + 2 && index > counter.actualPage - 4 || index > counter.nbPage.length - 2
+          ?
+            <BtnPage key={`btn ${index}`} 
+              value={index + 1} 
+              setCounter={setCounter} 
+              counter={counter} 
+              styleName={index + 1 !== counter.actualPage 
+                ? 'btn-page-num'
+                : 'btn-page-num btn-page-active'
+              } 
+            />
+          :
+          index === counter.actualPage + 3 && counter.nbPage.length - 1 !== index
+          &&
+            <BtnPage 
+              key={`btn ...`}
+              value={'...'} 
+              styleName='btn-page-alpha'
+              isDisabled={true} 
+              setCounter={setCounter}
+              counter={counter}
+              increment={-1}
+            />
+        )
+      :
+        counter.nbPage.map((value, index) => 
+          <BtnPage key={`btn ${index}`} 
+            value={index + 1} 
+            setCounter={setCounter} 
+            counter={counter} 
+            styleName={index + 1 !== counter.actualPage 
+              ? 'btn-page-num'
+              : 'btn-page-num btn-page-active'
+            } 
+          />
+        )
+      }
+
 
       <BtnPage value={'Next'} 
         styleName={counter.actualPage !== counter.nbPage.length 
